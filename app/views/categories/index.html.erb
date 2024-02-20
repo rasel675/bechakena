@@ -1,0 +1,54 @@
+<div class="row mt-3">
+  <div class="col">
+    <h3>All Categories</h3>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <% if policy(Category).new? %>
+    <% # if policy(:user_role).new? %>
+
+      <%= link_to "Add Category", new_category_url, class:"btn btn-primary" %>
+    <% end %>
+    <%= link_to "Download CSV", categories_url(format: :csv), class:"btn btn-primary" %>
+
+  </div>
+  <div class="col"></div>
+  <div class="col">
+    <%= form_tag(categories_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Parent Category</th>
+          <th scope="col">Product Count</th>
+          <th scope="col">Details</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.category&.name %></td>
+          <td><%= category.product_count %></td>
+          <td><%= category.details %></td>
+          <td>
+            <%=link_to "View", category, class:" btn btn-info" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

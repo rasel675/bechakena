@@ -1,0 +1,33 @@
+<div class="row mt-4">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <h3>Edit Variant</h3>
+      <div class="mt-3 container-fluid">
+        <%= form_with model: [ @product, @variant ] do |form| %>
+          <div class="row mb-3">
+              <%= form.label :color, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.text_field :color, placeholder: "Product color", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <%= form.label :size, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.text_field :size, placeholder: "Small/Medium/Large", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <%= form.label :sku, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.text_field :sku, placeholder: "redsm*****", class: "form-control" %>
+            </div>
+          </div>
+          <br>
+          <div>
+            <%= form.submit "Update", class:"btn btn-primary" %>
+          </div>
+       <% end %>
+      </div>
+  </div>
+  <div class="col-3"></div>
+</div>

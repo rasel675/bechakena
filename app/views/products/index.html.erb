@@ -1,0 +1,58 @@
+<div class="row mt-3">
+  <div class="col">
+    <h3>All Products</h3>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <%= link_to "Add Product", new_product_url(@product), class:"btn btn-primary" %>
+  </div>
+  <div class="col">
+    <%# Rendering the csv import form  %>
+    <%= render "shared/csv_import" %>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col">
+    <%= form_tag(products_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Parent Category</th>
+          <th scope="col">Price</th>
+          <th scope="col">Product Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.category&.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <div class="row">
+              <div class="col">
+                <%= link_to "edit", edit_product_url(product), class:"btn btn-warning" %>
+                <%= link_to "View", product_url(product), class: "btn btn-info" %>
+              </div>
+            </div>          
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

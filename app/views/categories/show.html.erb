@@ -1,0 +1,25 @@
+<div class="row mt-3">
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @category.name %> Details</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">
+          <%=
+            if @category.category
+              "Sub Category"
+             else
+              "Main Category"
+            end
+          %>
+        </h6>
+        <p class="card-text"><%= @category.details %></p>
+        <div>
+        <%= link_to "Add new", new_category_url, class:"btn btn-primary" %>
+
+        <%= link_to "edit", edit_category_url(@category), class:"btn btn-warning" %>
+        <%= button_to "Delete", category_path(@category), method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

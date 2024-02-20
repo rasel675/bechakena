@@ -1,0 +1,45 @@
+<div class="row mt-3">
+  <div class="col">
+    <h3>All Users</h3>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <%# <%= link_to "Add User", new_user_url(@user), class:"btn btn-primary" %>
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email ID</th>
+          <th scope="col">Role</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |u| %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.username %></td>
+          <td><%= u.email %></td>
+          <td><%= u.roles.to_sentence %></td>
+          <td>
+            <%=link_to "View", user_role_path(u), class:" btn btn-info" %>
+            <%= link_to "Edit", edit_user_role_path(u), class: "btn btn-warning" %>
+
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

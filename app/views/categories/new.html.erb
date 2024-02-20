@@ -1,0 +1,31 @@
+<div class="row mt-4">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <h3>Create new category</h3>
+      <div class="mt-3 container-fluid">
+        <%= form_with model: @category do |form| %>
+          <div class="row mb-3">
+              <%= form.label :name, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.text_field :name, placeholder: "Category Name", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <%= form.label :details, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.text_field :details, placeholder: "Details", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <%= form.label :category_id, class:"col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+            <%= form.select :category_id, Category.where(category_id: nil).map { |c| [c.name, c.id] }, class: "form-control form-select" %>
+            </div>
+          </div>
+          <br>
+          <div>
+            <%= form.submit "Create", class:"btn btn-primary" %>
+          </div>
+      <% end %>
+  <div class="col-3"></div>
+</div>

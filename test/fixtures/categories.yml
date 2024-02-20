@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category_id: 
+
+two:
+  name: MyString
+  category_id:
+
+# == Schema Information
+#
+# Table name: categories
+#
+#  id            :bigint           not null, primary key
+#  details       :text
+#  name          :string           not null
+#  product_count :integer          default(0)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  category_id   :bigint
+#

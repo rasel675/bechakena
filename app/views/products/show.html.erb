@@ -1,0 +1,59 @@
+<div class="row mt-3">
+  <div class="col">
+    <h3>Product Details</h3>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Parent Category</th>
+          <th scope="col">Price</th>
+          <th scope="col">Product Details</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @product.name %></td>
+          <td><%= @product.category&.name %></td>
+          <td><%= @product.price %></td>
+          <td><%= @product.description %> </td>
+          <td><%= button_to "Delete", product_url(@product), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<hr>
+<hr>
+<div>
+<%= link_to "Add New Variant", new_product_variant_path(@product), class: "btn btn-info" %>
+<%= link_to "Search Variant", new_product_variant_path(@product), class: "btn btn-info" %>
+</div>
+
+<h3>Variants</h3>
+<div class="container d-flex flex-row">
+  <% @product.variants.each do |variant| %>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card  mx-auto" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Variant ID#<%= variant.id%> Details</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Variant color <%= variant.color%></h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Variant SKU <%= variant.sku %></h6>          
+          <div class="row mt-2">
+             <div class="col"> <%= link_to "edit", edit_product_variant_url(@product, variant), class:"btn btn-warning" %></div>
+             <div class="col"> <%= button_to "Delete", product_variant_url(@product), method: :delete, class: "btn btn-danger" %></div>
+             <div class="col"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
